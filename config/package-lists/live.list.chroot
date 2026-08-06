@@ -1,0 +1,11 @@
+live-boot
+live-config
+live-config-systemd
+systemd-sysv
+lightdm
+# Network
+network-manager
+wpasupplicant
+wireless-regdb
+network-manager-gnome
+isc-dhcp-client

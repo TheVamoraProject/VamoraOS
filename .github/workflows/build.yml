@@ -1,0 +1,74 @@
+name: Build VamoraOS ISO
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Build inside Debian Trixie instead of Ubuntu
+    container:
+      image: debian:trixie
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: System information
+        run: |
+          uname -a
+          cat /etc/os-release
+
+      - name: Install dependencies
+        run: |
+          set -euxo pipefail
+          export DEBIAN_FRONTEND=noninteractive
+
+          apt-get update
+
+          apt-get install -y \
+            live-build \
+            debootstrap \
+            squashfs-tools \
+            xorriso \
+            grub-pc-bin \
+            grub-efi-amd64-bin \
+            mtools \
+            dosfstools \
+            wget \
+            curl \
+            rsync \
+            git \
+            ca-certificates \
+            debian-archive-keyring
+
+          lb --version
+          apt-cache policy live-build
+
+      - name: Show live-build configuration
+        run: |
+          lb config --dump || true
+
+      - name: Build ISO
+        run: |
+          set -euxo pipefail
+          lb build 2>&1 | tee build.log
+
+      - name: Upload ISO
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vamora-iso
+          path: |
+            *.iso
+            binary.iso
+            binary.hybrid.iso
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            build.log

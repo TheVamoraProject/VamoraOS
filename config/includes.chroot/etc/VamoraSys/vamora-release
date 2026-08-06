@@ -1,0 +1,29 @@
+VMF_VERSION="1"
+
+AL_NAME="VamoraOS"
+NAME="VamoraOS"
+PRETTY_NAME="VamoraOS Pre-Alpha 2"
+
+ID="vamora"
+ID_LIKE="linux"
+
+VERSION_ID="0.2"
+VERSION="Pre-Alpha 2 (Edgeon)"
+VERSION_CODENAME=edgeon
+
+VERSION_CODENAME="Edgeon"
+
+HOME_URL="https://vamora.vercel.app"
+DOCUMENTATION_URL="https://vamora.vercel.app/docs"
+SUPPORT_URL="https://github.com/TheVamoraProject/VamoraOS/issues"
+BUG_REPORT_URL="https://github.com/TheVamoraProject/VamoraOS/issues"
+SOURCE_URL="https://github.com/TheVamoraProject/VamoraOS"
+
+LOGO="/etc/VamoraSys/branding/vamora.png"
+ANSI_COLOR="38;2;99;102;241"
+
+ARCHITECTURE="aarch64"
+KERNEL="Linux 6.1.0-37-arm64"
+
+BUILD_ID="1"
+CHANNEL="alpha"

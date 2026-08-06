@@ -1,0 +1,11 @@
+PRETTY_NAME="VamoraOS Pre-Alpha 2"
+NAME="VamoraOS"
+VERSION_ID="0.2"
+VERSION="Pre-Alpha 2"
+VERSION_CODENAME=edgeon
+DEBIAN_VERSION_FULL=13.5
+ID=vamora
+HOME_URL="https://vamora.vercel.app/"
+SUPPORT_URL="https://vamora.vercel.app/projects/vamoraos"
+BUG_REPORT_URL="https://vamora.vercel.app/feedback"
+

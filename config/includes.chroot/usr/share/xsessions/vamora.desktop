@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Vamora Althyn
+Comment=Althyn
+Exec=/usr/local/bin/althyn
+Type=Application
+DesktopNames=Vamora

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Wallpaper
+feh --bg-fill /etc/VamoraSys/wallpapers/background.jpg &
+
+# Status bar
+vamora-homescreen &
+vamora-welcome &
+# Start Openbox & statusbar & Picom
+picom &
+vamora-statusbar &
+exec openbox-session
