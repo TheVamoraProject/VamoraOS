@@ -9,6 +9,9 @@ nautilus
 # Browser
 firefox-esr
 
+# Text
+mousepad
+
 # Audio
 pipewire
 wireplumber

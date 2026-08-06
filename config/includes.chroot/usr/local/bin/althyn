@@ -1,12 +1,18 @@
 #!/bin/sh
 
+# Window manager first — everything else 
+# depends on it being up, so it can't be the last thing exec'd.
+openbox-session &
+WM_PID=$!
+
 # Wallpaper
 feh --bg-fill /etc/VamoraSys/wallpapers/background.jpg &
 
 # Status bar
 vamora-homescreen &
-vamora-welcome &
-# Start Openbox & statusbar & Picom
 picom &
 vamora-statusbar &
-exec openbox-session
+vamora-welcome &
+
+# Session ends when the WM exits
+wait "$WM_PID"

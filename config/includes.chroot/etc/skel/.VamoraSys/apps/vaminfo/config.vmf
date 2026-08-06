@@ -1,0 +1,86 @@
+ascii_file = "ascii1.vtxt"
+ascii_color = "blue"
+title_color = "bright_blue"
+key_color = "bright_blue"
+value_color = "white"
+separator = "-"
+mini_mode = false
+show_title = true
+show_separator = true
+module_order = [
+    "os",
+    "vamorasys_version",
+    "vmf_version",
+    "vamora_version_codename",
+    "hostname",
+    "kernel",
+    "bios",
+    "android_version",
+    "android_device",
+    "cpu",
+    "gpu",
+    "ram",
+    "disk",
+    "battery",
+    "bluetooth",
+    "uptime",
+    "sys_age",
+    "shell",
+    "terminal",
+    "tty_type",
+    "desktop",
+    "display_server",
+    "resolution",
+    "theme",
+    "fs_type",
+    "sudo_status",
+    "local_ip",
+    "public_ip",
+    "network",
+    "birthday_countdown",
+    "quotes",
+    "jokes",
+    "color_blocks_big",
+    "color_blocks_small",
+]
+
+[greetings]
+enabled = false
+birthday = ""
+events = []
+
+[modules]
+hostname = true
+os = true
+kernel = true
+bios = true
+cpu = true
+gpu = true
+ram = true
+disk = true
+uptime = false
+shell = true
+terminal = true
+desktop = true
+resolution = false
+display_server = true
+theme = false
+tty_type = true
+fs_type = true
+sys_age = false
+local_ip = true
+public_ip = false
+network = true
+bluetooth = true
+battery = true
+android_version = false
+android_device = false
+sudo_status = true
+birthday_countdown = false
+vamorasys_version = true
+vmf_version = true
+vamora_version_codename = true
+quotes = false
+jokes = false
+color_blocks_big = true
+color_blocks_small = false
