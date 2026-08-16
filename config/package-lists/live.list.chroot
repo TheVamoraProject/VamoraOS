@@ -1,11 +1,10 @@
 live-boot
 live-config
 live-config-systemd
+gdm3
 systemd-sysv
-lightdm
 # Network
 network-manager
 wpasupplicant
 wireless-regdb
-network-manager-gnome
-isc-dhcp-client
+network-manager-applet

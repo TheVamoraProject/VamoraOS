@@ -1,0 +1,5 @@
+module com.vamora
+optional plugin com_vamora
+classname com_vamora_plugin
+typeinfo plugin.qmltypes
+prefer :/qt/qml/com/vamora/
