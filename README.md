@@ -31,6 +31,7 @@ VamoraOS bundles together several sub-projects developed under TheVamoraProject:
 | **[Althyn-X11](https://github.com/TheVamoraProject/Althyn-x11)** | Vamora desktop shell (X11) | 🟡 Pre-alpha / Alpha |
 | **[VamInfo ](https://github.com/TheVamoraProject/vaminfo)** | System information fetch tool | Active |
 | **[VamoraSys](https://github.com/TheVamoraProject/VamoraSys)** | System settings application | Active |
+| **[Vano](https://github.com/TheVamoraProject/Vano)** | A helpful assistant | Active |
 
 ## 📂 Repository Contents
 
