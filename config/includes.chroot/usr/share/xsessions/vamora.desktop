@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Vamora Althyn
-Comment=Althyn
-Exec=/usr/local/bin/althyn
+Name=Vamora Althyn (X11)
+Comment=The Vamora Desktop Environment for x11
+Exec=/usr/local/bin/althyn --run-x11
 Type=Application
-DesktopNames=Vamora
+DesktopNames=Althyn

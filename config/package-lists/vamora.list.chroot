@@ -5,9 +5,51 @@ feh
 picom
 tilix
 nautilus
+labwc
+swaybg
+
+# Wayland
+wayland-protocols
+wayland-utils
+libwayland-client0
+libwayland-cursor0
+libwayland-egl1
+libwayland-server0
+libxkbcommon0
+xwayland
+labwc
+swaybg
+
+# Wayland desktop/session essentials
+dbus-user-session
+xdg-utils
+xdg-user-dirs
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+polkitd
+seatd
+
+# X11
+x11-xserver-utils
+x11-utils
+xauth
+
+# Graphics
+libegl1
+libgl1
+libglx0
+libopengl0
+libglvnd0
+libgles2
+libgbm1
+libdrm2
+mesa-vulkan-drivers
+libgl1-mesa-dri
 
 # Localization
 locales
+console-setup
+keyboard-configuration
 
 # Icons 
 hicolor-icon-theme
@@ -30,6 +72,7 @@ pipewire-pulse
 
 # QT n stuff
 libqt6core6
+libqt6core6t64
 libqt6gui6
 libqt6qml6
 libqt6quick6
@@ -40,20 +83,50 @@ libqt6opengl6
 libqt6openglwidgets6
 libqt6svg6
 
+# Qt Wayland
+qt6-wayland
+libqt6waylandclient6
+libqt6waylandcompositor6
+
+# Qt additional runtime modules
+libqt6quickwidgets6
+libqt6sql6
+libqt6xml6
+libqt6positioning6
+libqt6printsupport6
+
+# Qt WebEngine
+libqt6webengine6-data
+libqt6webenginecore6
+libqt6webenginecore6-bin
+libqt6webenginequick6
+libqt6webenginewidgets6
+
+# Qt QML
 qml6-module-qtquick
 qml6-module-qtquick-controls
+qml6-module-qtquick-dialogs
 qml6-module-qtquick-layouts
 qml6-module-qtquick-window
+qml6-module-qtquick-effects
+qml6-module-qtquick-templates
+qml6-module-qtquick-pdf
+
 qml6-module-qt5compat-graphicaleffects
 qml6-module-org-kde-layershell
 qml6-module-qtqml
 qml6-module-qtqml-models
 qml6-module-qtqml-workerscript
 qml6-module-qtcore
-qml6-module-qtquick-templates
-qml6-module-qtquick-effects
 qml6-module-qt-labs-platform
 qml6-module-qt-labs-settings
+
+# Qt WebEngine QML
+qml6-module-qtwebengine
+qml6-module-qtwebengine-controlsdelegates
+qml6-module-qtwebchannel
+
+# Qt QML runtime libraries
 libqt6qmlmeta6
 libqt6qmlmodels6
 libqt6qmlworkerscript6

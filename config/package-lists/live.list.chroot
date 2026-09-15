@@ -3,8 +3,54 @@ live-config
 live-config-systemd
 gdm3
 systemd-sysv
+
 # Network
 network-manager
 wpasupplicant
 wireless-regdb
 network-manager-applet
+
+# Wayland
+wayland-protocols
+wayland-utils
+libwayland-client0
+libwayland-cursor0
+libwayland-egl1
+libwayland-server0
+libxkbcommon0
+xwayland
+
+
+# Wayland desktop/session essentials
+dbus-user-session
+xdg-utils
+xdg-user-dirs
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+polkitd
+seatd
+
+# Graphics
+libegl1
+libgl1
+libglx0
+libopengl0
+libglvnd0
+libgles2
+libgbm1
+libdrm2
+mesa-vulkan-drivers
+libgl1-mesa-dri
+
+# X11
+xorg
+xwayland
+x11-xserver-utils
+x11-utils
+xauth
+
+# Localization
+locales
+locales-all
+console-setup
+keyboard-configuration

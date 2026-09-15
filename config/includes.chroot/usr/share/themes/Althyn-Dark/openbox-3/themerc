@@ -1,0 +1,143 @@
+!! Althyn-Dark — Openbox 3 theme
+!! Matches the Althyn Settings app shell (Settings/src/qml/main.qml).
+!! Palette is the zinc scale used by root.bgPrimary / bgSurface / bgCard /
+!! borderColor / txtPrimary / txtSecondary, dark variant.
+!!
+!!   bgPrimary    #000000     txtPrimary    #f4f4f5
+!!   bgSurface    #18181b     txtSecondary  #a1a1aa
+!!   bgCard       #27272a     txtMuted      #71717a
+!!   bgCardHover  #3f3f46     icon stroke   #e4e4e7
+!!   borderColor  #27272a     accent        #7dd3fc
+
+!! ── Geometry ──────────────────────────────────────────────────────────
+!! chromeHeight in the app is 46px. With a 10-11pt Inter titlebar font and
+!! 16px button masks, padding.height 14 lands on roughly the same bar.
+border.width: 1
+padding.width: 12
+padding.height: 14
+window.handle.width: 0
+window.client.padding.width: 0
+window.client.padding.height: 0
+menu.border.width: 1
+menu.overlap.x: 0
+menu.overlap.y: 0
+menu.separator.width: 1
+menu.separator.padding.width: 8
+menu.separator.padding.height: 5
+
+!! ── Window frame ──────────────────────────────────────────────────────
+window.active.border.color: #27272a
+window.inactive.border.color: #1c1c1f
+window.active.client.color: #000000
+window.inactive.client.color: #000000
+
+window.active.title.bg: flat solid
+window.active.title.bg.color: #000000
+window.inactive.title.bg: flat solid
+window.inactive.title.bg.color: #000000
+
+window.active.title.separator.color: #000000
+window.inactive.title.separator.color: #000000
+
+!! The app's chrome title is left-aligned, DemiBold, txtPrimary.
+window.label.text.justify: left
+window.active.label.bg: parentrelative
+window.active.label.text.color: #f4f4f5
+window.inactive.label.bg: parentrelative
+window.inactive.label.text.color: #71717a
+
+window.active.handle.bg: flat solid
+window.active.handle.bg.color: #000000
+window.inactive.handle.bg: flat solid
+window.inactive.handle.bg.color: #000000
+window.active.grip.bg: flat solid
+window.active.grip.bg.color: #000000
+window.inactive.grip.bg: flat solid
+window.inactive.grip.bg.color: #000000
+
+!! ── Titlebar buttons ──────────────────────────────────────────────────
+!! WindowControl in main.qml fills with bgCardHover on hover and keeps the
+!! same neutral colour for close — no red — so this does the same.
+window.active.button.unpressed.bg: parentrelative
+window.active.button.unpressed.image.color: #e4e4e7
+window.active.button.hover.bg: flat solid
+window.active.button.hover.bg.color: #3f3f46
+window.active.button.hover.image.color: #f4f4f5
+window.active.button.pressed.bg: flat solid
+window.active.button.pressed.bg.color: #52525b
+window.active.button.pressed.image.color: #ffffff
+window.active.button.disabled.bg: parentrelative
+window.active.button.disabled.image.color: #3f3f46
+window.active.button.toggled.unpressed.bg: flat solid
+window.active.button.toggled.unpressed.bg.color: #27272a
+window.active.button.toggled.unpressed.image.color: #f4f4f5
+window.active.button.toggled.hover.bg: flat solid
+window.active.button.toggled.hover.bg.color: #3f3f46
+window.active.button.toggled.hover.image.color: #ffffff
+window.active.button.toggled.pressed.bg: flat solid
+window.active.button.toggled.pressed.bg.color: #52525b
+window.active.button.toggled.pressed.image.color: #ffffff
+
+window.inactive.button.unpressed.bg: parentrelative
+window.inactive.button.unpressed.image.color: #52525b
+window.inactive.button.hover.bg: flat solid
+window.inactive.button.hover.bg.color: #27272a
+window.inactive.button.hover.image.color: #a1a1aa
+window.inactive.button.pressed.bg: flat solid
+window.inactive.button.pressed.bg.color: #3f3f46
+window.inactive.button.pressed.image.color: #e4e4e7
+window.inactive.button.disabled.bg: parentrelative
+window.inactive.button.disabled.image.color: #27272a
+window.inactive.button.toggled.unpressed.bg: flat solid
+window.inactive.button.toggled.unpressed.bg.color: #18181b
+window.inactive.button.toggled.unpressed.image.color: #a1a1aa
+window.inactive.button.toggled.hover.bg: flat solid
+window.inactive.button.toggled.hover.bg.color: #27272a
+window.inactive.button.toggled.hover.image.color: #e4e4e7
+window.inactive.button.toggled.pressed.bg: flat solid
+window.inactive.button.toggled.pressed.bg.color: #3f3f46
+window.inactive.button.toggled.pressed.image.color: #ffffff
+
+!! ── Menus ─────────────────────────────────────────────────────────────
+!! Modelled on SettingsListPane: bgSurface panel, 1px borderColor outline,
+!! bgCardHover on the highlighted row.
+menu.border.color: #27272a
+menu.separator.color: #27272a
+
+menu.title.bg: flat solid
+menu.title.bg.color: #000000
+menu.title.text.color: #a1a1aa
+menu.title.text.justify: left
+
+menu.items.bg: flat solid
+menu.items.bg.color: #18181b
+menu.items.text.color: #f4f4f5
+menu.items.disabled.text.color: #52525b
+menu.items.justify: left
+
+menu.items.active.bg: flat solid
+menu.items.active.bg.color: #3f3f46
+menu.items.active.text.color: #f4f4f5
+menu.items.active.disabled.text.color: #52525b
+
+!! ── OSD (volume/resize popups, window switcher) ───────────────────────
+osd.border.width: 1
+osd.border.color: #27272a
+osd.bg: flat solid
+osd.bg.color: #18181b
+osd.label.bg: parentrelative
+osd.label.text.color: #f4f4f5
+osd.hilight.bg: flat solid
+osd.hilight.bg.color: #7dd3fc
+osd.unhilight.bg: flat solid
+osd.unhilight.bg.color: #27272a
+osd.button.unpressed.bg: flat solid
+osd.button.unpressed.bg.color: #27272a
+osd.button.unpressed.*.border.color: #27272a
+osd.button.pressed.bg: flat solid
+osd.button.pressed.bg.color: #3f3f46
+osd.button.pressed.*.border.color: #3f3f46
+osd.button.focused.bg: flat solid
+osd.button.focused.bg.color: #3f3f46
+osd.button.focused.*.border.color: #7dd3fc
+osd.button.focused.box.color: #7dd3fc

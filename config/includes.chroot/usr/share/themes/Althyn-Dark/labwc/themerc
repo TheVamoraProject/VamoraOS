@@ -1,0 +1,125 @@
+### Althyn-Dark — labwc theme
+### Same palette and geometry as the Openbox variant, plus the labwc-only
+### bits (rounded hover pills, shadows, window-switcher OSD).
+###
+###   bgPrimary #000000  bgSurface #18181b  bgCard #27272a
+###   bgCardHover #3f3f46  border #27272a
+###   txtPrimary #f4f4f5  txtSecondary #a1a1aa  txtMuted #71717a
+###   icon stroke #e4e4e7  accent #7dd3fc
+
+# ── Geometry ───────────────────────────────────────────────────────────
+border.width: 1
+padding.width: 12
+padding.height: 14
+titlebar.height: 46
+window.titlebar.padding.width: 8
+window.titlebar.padding.height: 0
+menu.border.width: 1
+menu.overlap.x: 0
+menu.overlap.y: 0
+menu.separator.width: 1
+menu.separator.padding.width: 8
+menu.separator.padding.height: 5
+menu.items.padding.x: 14
+menu.items.padding.y: 7
+menu.width.min: 180
+menu.width.max: 420
+
+# ── Window frame ───────────────────────────────────────────────────────
+window.active.border.color: #27272a
+window.inactive.border.color: #1c1c1f
+
+window.active.title.bg.color: #000000
+window.inactive.title.bg.color: #000000
+
+window.label.text.justify: left
+window.active.label.text.color: #f4f4f5
+window.inactive.label.text.color: #71717a
+
+window.active.handle.bg.color: #000000
+window.inactive.handle.bg.color: #000000
+
+# Soft drop shadow so floating windows read like the app's elevated panels.
+window.active.shadow.size: 40
+window.active.shadow.color: #00000090
+window.inactive.shadow.size: 20
+window.inactive.shadow.color: #00000060
+
+# ── Titlebar buttons ───────────────────────────────────────────────────
+# WindowControl in main.qml is a 28px circle that fills with bgCardHover.
+# corner-radius 14 reproduces that pill; close stays neutral (no red),
+# exactly as the app does.
+window.button.width: 28
+window.button.height: 28
+window.button.spacing: 4
+window.active.button.hover.bg.corner-radius: 14
+window.inactive.button.hover.bg.corner-radius: 14
+
+window.active.button.unpressed.image.color: #e4e4e7
+window.active.button.hover.image.color: #f4f4f5
+window.active.button.hover.bg.color: #3f3f46
+window.active.button.pressed.image.color: #ffffff
+
+window.active.button.menu.unpressed.image.color: #e4e4e7
+window.active.button.iconify.unpressed.image.color: #e4e4e7
+window.active.button.max.unpressed.image.color: #e4e4e7
+window.active.button.close.unpressed.image.color: #e4e4e7
+window.active.button.shade.unpressed.image.color: #e4e4e7
+window.active.button.omnipresent.unpressed.image.color: #e4e4e7
+
+window.active.button.menu.hover.bg.color: #3f3f46
+window.active.button.iconify.hover.bg.color: #3f3f46
+window.active.button.max.hover.bg.color: #3f3f46
+window.active.button.close.hover.bg.color: #3f3f46
+window.active.button.shade.hover.bg.color: #3f3f46
+window.active.button.omnipresent.hover.bg.color: #3f3f46
+
+window.inactive.button.unpressed.image.color: #52525b
+window.inactive.button.hover.image.color: #a1a1aa
+window.inactive.button.hover.bg.color: #27272a
+window.inactive.button.pressed.image.color: #e4e4e7
+
+window.inactive.button.menu.unpressed.image.color: #52525b
+window.inactive.button.iconify.unpressed.image.color: #52525b
+window.inactive.button.max.unpressed.image.color: #52525b
+window.inactive.button.close.unpressed.image.color: #52525b
+
+window.inactive.button.menu.hover.bg.color: #27272a
+window.inactive.button.iconify.hover.bg.color: #27272a
+window.inactive.button.max.hover.bg.color: #27272a
+window.inactive.button.close.hover.bg.color: #27272a
+
+# ── Menus ──────────────────────────────────────────────────────────────
+menu.border.color: #27272a
+menu.separator.color: #27272a
+menu.title.bg.color: #000000
+menu.title.text.color: #a1a1aa
+menu.items.bg.color: #18181b
+menu.items.text.color: #f4f4f5
+menu.items.active.bg.color: #3f3f46
+menu.items.active.text.color: #f4f4f5
+
+# ── OSD: window switcher, workspace switcher, volume/brightness ────────
+osd.bg.color: #18181b
+osd.border.color: #27272a
+osd.border.width: 1
+osd.label.text.color: #f4f4f5
+osd.window-switcher.width: 620
+osd.window-switcher.padding: 12
+osd.window-switcher.item.padding.x: 12
+osd.window-switcher.item.padding.y: 7
+osd.window-switcher.item.active.border.width: 1
+osd.window-switcher.preview.border.width: 1
+osd.window-switcher.preview.border.color: #7dd3fc,#7dd3fc,#7dd3fc
+osd.workspace-switcher.boxes.width: 24
+osd.workspace-switcher.boxes.height: 24
+
+# ── Snap / magnifier overlays ──────────────────────────────────────────
+snapping.overlay.region.bg.enabled: true
+snapping.overlay.edge.bg.enabled: true
+snapping.overlay.region.bg.color: #7dd3fc40
+snapping.overlay.edge.bg.color: #7dd3fc40
+snapping.overlay.region.border.width: 1
+snapping.overlay.edge.border.width: 1
+snapping.overlay.region.border.color: #7dd3fc
+snapping.overlay.edge.border.color: #7dd3fc

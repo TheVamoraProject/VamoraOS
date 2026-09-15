@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Vamora Althyn
+Comment=The Vamora Desktop Environment for wayland
+Exec=/usr/local/bin/althyn
+Type=Application
+DesktopNames=Althyn

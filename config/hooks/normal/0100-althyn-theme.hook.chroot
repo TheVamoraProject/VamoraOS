@@ -1,0 +1,68 @@
+#!/bin/sh
+# lb hook (normal, runs inside the chroot after packages are installed)
+#
+# Makes Althyn-Dark the default window theme for both WMs this repo ships
+# (labwc in the `althyn` image, Openbox in `althyn-x11`) without touching
+# per-user config, so it applies to any user created at boot — including
+# the live session user, who never gets a ~/.config of their own until
+# they change something.
+#
+# Install as: config/hooks/normal/0100-althyn-theme.hook.chroot
+# (needs the executable bit: chmod +x on this file before `lb build`)
+
+set -e
+
+echo "P: Setting Althyn-Dark as the default window theme"
+
+# ── labwc ────────────────────────────────────────────────────────────
+# /etc/xdg/labwc/rc.xml (installs.chroot dropped it there already) is
+# read as the XDG_CONFIG_DIRS fallback whenever a user has no
+# ~/.config/labwc/rc.xml — nothing more to do here, but confirm it landed
+# so a bad includes.chroot path fails the build loudly instead of quietly
+# shipping without a default theme.
+if [ -f /etc/xdg/labwc/rc.xml ]; then
+    echo "P: labwc default rc.xml present"
+else
+    echo "E: /etc/xdg/labwc/rc.xml missing -- check includes.chroot layout" >&2
+    exit 1
+fi
+
+# ── Openbox ──────────────────────────────────────────────────────────
+# The openbox package ships its own /etc/xdg/openbox/rc.xml full of
+# keybindings we don't want to hand-maintain a duplicate of, so patch the
+# <theme><name> in place rather than shipping a whole replacement file.
+OB_RC="/etc/xdg/openbox/rc.xml"
+if [ -f "$OB_RC" ]; then
+    if command -v perl >/dev/null 2>&1; then
+        perl -0777 -pi -e \
+            's/(<theme>\s*<name>)[^<]*(<\/name>)/${1}Althyn-Dark${2}/s' \
+            "$OB_RC"
+    else
+        # No perl in a minimal chroot: do the same edit with sed across a
+        # 3-line window, which covers the standard package-shipped layout
+        # (<theme> then <name>...</name> on the very next line).
+        sed -i '0,/<theme>/{ /<theme>/,/<\/theme>/ { 0,/<name>.*<\/name>/ s|<name>.*</name>|<name>Althyn-Dark</name>| } }' "$OB_RC"
+    fi
+    if grep -q '<theme>[[:space:]]*<name>Althyn-Dark</name>' "$OB_RC" 2>/dev/null || \
+       grep -A1 '<theme>' "$OB_RC" | grep -q 'Althyn-Dark'; then
+        echo "P: openbox rc.xml theme set to Althyn-Dark"
+    else
+        echo "E: failed to patch $OB_RC -- check its <theme> block by hand" >&2
+        exit 1
+    fi
+    # titleLayout is a standalone line, safe to add if it's not already there
+    if ! grep -q '<titleLayout>' "$OB_RC"; then
+        sed -i 's|\(</name>\)\(\s*\)$|\1\2\n  <titleLayout>LIMC</titleLayout>|' "$OB_RC"
+    fi
+else
+    echo "E: $OB_RC not found -- is the openbox package installed in this image?" >&2
+    exit 1
+fi
+
+# ── fonts ────────────────────────────────────────────────────────────
+# Both rc.xml files ask for Inter; includes.chroot dropped the TTFs under
+# /usr/share/fonts/truetype/inter, this just makes fontconfig see them.
+if command -v fc-cache >/dev/null 2>&1; then
+    fc-cache -f /usr/share/fonts/truetype/inter >/dev/null
+    echo "P: font cache refreshed for Inter"
+fi

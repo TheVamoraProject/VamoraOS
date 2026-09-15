@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+  System-wide labwc default, read from /etc/xdg/labwc/rc.xml when a user
+  has no ~/.config/labwc/rc.xml of their own (labwc's XDG_CONFIG_DIRS
+  fallback) — which is exactly the case for a fresh live-session user.
+
+  Every section here is optional in labwc; anything not specified (mouse
+  bindings, keybindings, workspaces) falls back to labwc's compiled-in
+  defaults, so this file only needs to say what we actually want to
+  override: the theme.
+-->
+<labwc_config>
+  <theme>
+    <name>Althyn-Dark</name>
+    <cornerRadius>18</cornerRadius>
+    <dropShadows>yes</dropShadows>
+    <font place="ActiveWindow">
+      <name>Inter</name>
+      <size>10</size>
+      <weight>bold</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="InactiveWindow">
+      <name>Inter</name>
+      <size>10</size>
+      <weight>normal</weight>
+      <slant>normal</slant>
+    </font>
+    <font place="MenuItem">
+      <name>Inter</name>
+      <size>10</size>
+      <weight>normal</weight>
+      <slant>normal</slant>
+    </font>
+    <titlebar>
+      <layout>:iconify,max,close</layout>
+    </titlebar>
+  </theme>
+</labwc_config>

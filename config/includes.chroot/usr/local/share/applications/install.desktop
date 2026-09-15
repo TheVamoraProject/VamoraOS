@@ -1,0 +1,52 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Install Vamora
+Name[ar]=تثبيت فامورا
+Name[de]=Vamora installieren
+Name[es]=Instalar Vamora
+Name[fr]=Installer Vamora
+Name[it]=Installa Vamora
+Name[ja]=Vamoraをインストール
+Name[ko]=바모라 설치
+Name[nl]=Vamora installeren
+Name[pl]=Zainstaluj Vamora
+Name[pt]=Instalar Vamora
+Name[pt_BR]=Instalar Vamora
+Name[ru]=Установить Vamora
+Name[tr]=Vamora'yı Kur
+Name[uk]=Встановити Vamora
+Name[zh_CN]=安装 Vamora
+Name[zh_TW]=安裝 Vamora
+
+GenericName=Software Installer
+GenericName[ar]=مثبت البرامج
+GenericName[de]=Software-Installer
+GenericName[es]=Instalador de software
+GenericName[fr]=Programme d'installation
+GenericName[it]=Programma di installazione
+GenericName[ja]=ソフトウェアインストーラー
+GenericName[ko]=소프트웨어 설치 프로그램
+GenericName[pt]=Instalador de Software
+GenericName[ru]=Установщик программ
+GenericName[zh_CN]=软件安装程序
+
+Comment=Install the Vamora operating system
+Comment[ar]=تثبيت نظام تشغيل فامورا
+Comment[de]=Installieren Sie das Vamora-Betriebssystem
+Comment[es]=Instalar el sistema operativo Vamora
+Comment[fr]=Installer le système d'exploitation Vamora
+Comment[it]=Installa il sistema operativo Vamora
+Comment[ja]=Vamoraオペレーティングシステムをインストールします
+Comment[ko]=Vamora 운영 체제를 설치합니다
+Comment[pt]=Instalar o sistema operacional Vamora
+Comment[ru]=Установить операционную систему Vamora
+Comment[zh_CN]=安装 Vamora 操作系统
+
+Exec=vaminstall
+Icon=/etc/VamoraSys/Vamora.png
+Terminal=false
+StartupNotify=true
+Categories=System;Settings;
+Keywords=install;installer;os;system;vamora;

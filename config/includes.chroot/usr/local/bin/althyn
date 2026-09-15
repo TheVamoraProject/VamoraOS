@@ -1,18 +1,137 @@
 #!/bin/sh
+#
+# Althyn session launcher.
+#   althyn              -> Wayland session (labwc + swaybg)
+#   althyn --run-x11    -> X11 compat session (openbox + feh + picom)
+#
+# vamora-statusbar, vamora-homescreen, and vamora-dock need to know which
+# protocol to speak for layer-shell placement (pinning/reserving screen
+# space), so they take --run-x11 when the session is X11. vamora-welcome
+# is just a plain fullscreen setup screen with no layer/space allocation,
+# so it never needs the flag — it auto-detects and runs the same either way.
+#
+# vamora-powermenu is never autostarted here — it's the shutdown/restart
+# menu, invoked on demand (keybind/menu item), not part of session startup.
 
-# Window manager first — everything else 
-# depends on it being up, so it can't be the last thing exec'd.
-openbox-session &
-WM_PID=$!
+set -u
 
-# Wallpaper
-feh --bg-fill /etc/VamoraSys/wallpapers/background.jpg &
+# Display managers swallow this script's stdout/stderr, which makes any
+# crash invisible. Log everything to a file so a failed session can be
+# debugged after the fact (e.g. `tail -f ~/.local/state/althyn/session.log`
+# from another TTY while GDM is trying to start the session).
+LOG_DIR="$HOME/.local/state/althyn"
+mkdir -p "$LOG_DIR"
+exec >> "$LOG_DIR/session.log" 2>&1
+echo "---- althyn run: $(date '+%Y-%m-%d %H:%M:%S') args: $* ----"
 
-# Status bar
-vamora-homescreen &
-picom &
-vamora-statusbar &
-vamora-welcome &
+RUN_X11=0
+for arg in "$@"; do
+  case "$arg" in
+    --run-x11) RUN_X11=1 ;;
+    -h|--help)
+      echo "Usage: althyn [--run-x11]"
+      echo "  (no args)     Wayland session (labwc + swaybg)"
+      echo "  --run-x11     X11 compat session (openbox + feh + picom)"
+      exit 0
+      ;;
+  esac
+done
+
+WALLPAPER="/etc/VamoraSys/wallpapers/background.jpg"
+RUNNER_DIR="$HOME/.VamoraSys/althyn/runner"
+FIRST_RUN_MARKER="$RUNNER_DIR/first-run-done"
+mkdir -p "$RUNNER_DIR"
+
+FIRST_RUN=0
+[ -f "$FIRST_RUN_MARKER" ] || FIRST_RUN=1
+
+need() {
+  command -v "$1" >/dev/null 2>&1 || {
+    echo "althyn: '$1' not found on PATH — session cannot start."
+    exit 1
+  }
+}
+
+# Runs vamora-welcome to completion before starting vamora-homescreen on the
+# very first run (so the homescreen animation begins right after welcome
+# finishes); on later runs homescreen just starts immediately.
+# $1 = extra flag to pass to homescreen only (e.g. --run-x11), may be empty.
+start_homescreen() {
+  if [ "$FIRST_RUN" -eq 1 ]; then
+    ( vamora-welcome && vamora-homescreen ${1:+"$1"} ) &
+  else
+    vamora-homescreen ${1:+"$1"} &
+  fi
+}
+
+if [ "$RUN_X11" -eq 1 ]; then
+  # ---- X11 session ----
+  need openbox-session
+  need feh
+  need picom
+  need vamora-welcome
+  need vamora-statusbar
+  need vamora-homescreen
+  need vamora-dock
+
+  export XDG_SESSION_TYPE=x11
+  export XDG_CURRENT_DESKTOP=Vamora
+
+  openbox-session &
+  WM_PID=$!
+  sleep 1
+  if ! kill -0 "$WM_PID" 2>/dev/null; then
+    echo "althyn: openbox-session exited immediately — check its output above."
+    exit 1
+  fi
+
+  feh --bg-fill "$WALLPAPER" &
+  picom &
+
+  start_homescreen --run-x11
+  vamora-statusbar --run-x11 &
+  vamora-dock --run-x11 &
+else
+  # ---- Wayland session ----
+  need labwc
+  need swaybg
+  need vamora-welcome
+  need vamora-statusbar
+  need vamora-homescreen
+  need vamora-dock
+
+  export XDG_SESSION_TYPE=wayland
+  export XDG_CURRENT_DESKTOP=Vamora
+
+  # labwc only sets WAYLAND_DISPLAY inside its own process — clients we'd
+  # launch from this script wouldn't inherit it and would fail to connect.
+  # labwc's -s/--startup runs a command once the compositor (and its
+  # environment) is actually ready, so build that command as a small script
+  # and hand it to labwc directly instead of racing to launch clients here.
+  STARTUP_SCRIPT="$RUNNER_DIR/wayland-startup.sh"
+  {
+    echo '#!/bin/sh'
+    echo "swaybg -i \"$WALLPAPER\" -m fill &"
+    if [ "$FIRST_RUN" -eq 1 ]; then
+      echo 'vamora-welcome && vamora-homescreen &'
+    else
+      echo 'vamora-homescreen &'
+    fi
+    echo 'vamora-statusbar &'
+    echo 'vamora-dock &'
+  } > "$STARTUP_SCRIPT"
+  chmod +x "$STARTUP_SCRIPT"
+
+  labwc -s "$STARTUP_SCRIPT" &
+  WM_PID=$!
+  sleep 1
+  if ! kill -0 "$WM_PID" 2>/dev/null; then
+    echo "althyn: labwc exited immediately — check its output above."
+    exit 1
+  fi
+fi
+
+touch "$FIRST_RUN_MARKER"
 
 # Session ends when the WM exits
 wait "$WM_PID"
