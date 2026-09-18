@@ -7,6 +7,7 @@ separator = "-"
 mini_mode = false
 show_title = true
 show_separator = true
+icons_enabled = true
 module_order = [
     "os",
     "vamorasys_version",
@@ -40,8 +41,12 @@ module_order = [
     "birthday_countdown",
     "quotes",
     "jokes",
-    "color_blocks_big",
     "color_blocks_small",
+    "packages",
+    "swap",
+    "load_average",
+    "temperature",
+    "color_blocks_big",
 ]
 
 [greetings]
@@ -56,7 +61,11 @@ kernel = true
 bios = true
 cpu = true
 gpu = true
+packages = true
 ram = true
+swap = true
+load_average = true
+temperature = true
 disk = true
 uptime = false
 shell = true
