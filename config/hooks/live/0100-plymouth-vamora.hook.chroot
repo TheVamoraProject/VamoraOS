@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+echo "P: Setting vamora plymouth theme as default"
+
+plymouth-set-default-theme vamora
+update-initramfs -u -k all
+
+exit 0

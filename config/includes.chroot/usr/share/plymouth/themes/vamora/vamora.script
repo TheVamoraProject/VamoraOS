@@ -1,0 +1,73 @@
+// Vamora boot theme
+// black background, centered pulsing logo, small loading dots underneath
+
+Window.SetBackgroundTopColor(0.0, 0.0, 0.0);
+Window.SetBackgroundBottomColor(0.0, 0.0, 0.0);
+
+screen_w = Window.GetWidth();
+screen_h = Window.GetHeight();
+
+// ---- logo ----
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+
+logo.width = logo.image.GetWidth();
+logo.height = logo.image.GetHeight();
+
+logo.x = screen_w / 2 - logo.width / 2;
+logo.y = screen_h / 2 - logo.height / 2;
+
+logo.sprite.SetX(logo.x);
+logo.sprite.SetY(logo.y);
+logo.sprite.SetZ(10);
+
+// ---- loading dots ----
+dot_count = 3;
+dot_radius = 4;
+dot_gap = 20;
+dot_image = Image.Text("•", 1, 1, 1, 1, "Sans 28");
+
+dots = [];
+i = 0;
+while (i < dot_count) {
+    dots[i].sprite = Sprite(dot_image);
+    dots[i].sprite.SetZ(10);
+    i++;
+}
+
+dots_total_width = (dot_count - 1) * dot_gap;
+dots_y = screen_h - 60;
+
+i = 0;
+while (i < dot_count) {
+    dots[i].x = screen_w / 2 - dots_total_width / 2 + i * dot_gap - dot_image.GetWidth() / 2;
+    dots[i].sprite.SetX(dots[i].x);
+    dots[i].sprite.SetY(dots_y);
+    i++;
+}
+
+global.t = 0;
+
+fun refresh_callback() {
+    global.t++;
+
+    // sequential dot pulse
+    i = 0;
+    while (i < dot_count) {
+        phase = global.t * 0.12 - i * 1.4;
+        opacity = 0.25 + 0.75 * ((Math.Sin(phase) + 1) / 2);
+        dots[i].sprite.SetOpacity(opacity);
+        i++;
+    }
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+// keep the same look through every boot phase
+fun display_normal_callback() {
+}
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+fun quit_callback() {
+}
+Plymouth.SetQuitFunction(quit_callback);

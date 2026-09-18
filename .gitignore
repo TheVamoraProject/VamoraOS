@@ -1,1 +1,18 @@
+# build output
+*.iso
+*.iso.zsync
+*.img
+*.img.zsync
+
+# live-build state/cache dirs
+.build/
+binary/
+binary.*
+chroot/
 cache/
+local/
+.stage/
+
+# logs
+*.buildlog
+*.log
