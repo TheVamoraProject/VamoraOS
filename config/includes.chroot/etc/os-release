@@ -1,7 +1,7 @@
-PRETTY_NAME="VamoraOS Pre-Alpha 3"
+PRETTY_NAME="VamoraOS Pre-Alpha 3.1"
 NAME="VamoraOS"
-VERSION_ID="0.3.0"
-VERSION="Pre-Alpha 3"
+VERSION_ID="0.3.1"
+VERSION="Pre-Alpha 3.1"
 VERSION_CODENAME=edgeon
 DEBIAN_VERSION_FULL=13.5
 ID=vamora

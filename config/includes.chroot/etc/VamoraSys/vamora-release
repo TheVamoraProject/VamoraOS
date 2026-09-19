@@ -2,13 +2,13 @@ VMF_VERSION="1"
 
 AL_NAME="VamoraOS"
 NAME="VamoraOS"
-PRETTY_NAME="VamoraOS Pre-Alpha 3"
+PRETTY_NAME="VamoraOS Pre-Alpha 3.1"
 
 ID="vamora"
 ID_LIKE="linux"
 
-VERSION_ID="0.3.0"
-VERSION="Pre-Alpha 3 (Edgeon)"
+VERSION_ID="0.3.1"
+VERSION="Pre-Alpha 3.1 (Edgeon)"
 VERSION_CODENAME=edgeon
 
 VERSION_CODENAME="Edgeon"
@@ -25,5 +25,5 @@ ANSI_COLOR="38;2;99;102;241"
 ARCHITECTURE="aarch64"
 KERNEL="Linux 6.1.0-37-arm64"
 
-BUILD_ID="4"
+BUILD_ID="7"
 CHANNEL="alpha"
