@@ -27,8 +27,7 @@ VamoraOS bundles together several sub-projects developed under TheVamoraProject:
 
 | Project | Description | Status |
 |---|---|---|
-| **[Althyn](https://github.com/TheVamoraProject/Althyn)** | Vamora desktop shell (Wayland) | 🟢 Beta and up |
-| **[Althyn-X11](https://github.com/TheVamoraProject/Althyn-x11)** | Vamora desktop shell (X11) | 🟡 Pre-alpha / Alpha |
+| **[Althyn](https://github.com/TheVamoraProject/Althyn)** | Vamora desktop shell | X11 only |
 | **[VamInfo ](https://github.com/TheVamoraProject/vaminfo)** | System information fetch tool | Active |
 | **[VamoraSys](https://github.com/TheVamoraProject/VamoraSys)** | System settings application | Active |
 | **[Vano](https://github.com/TheVamoraProject/Vano)** | A helpful assistant | Active |
@@ -36,7 +35,7 @@ VamoraOS bundles together several sub-projects developed under TheVamoraProject:
 ## 📂 Repository Contents
 
 - 🛠️ Live-Build configuration
-- 📦 Build scripts (coming soon)
+- 📦 Build script
 - ⚙️ Configuration files
 - 📚 Documentation (coming soon)
 
@@ -44,7 +43,9 @@ VamoraOS bundles together several sub-projects developed under TheVamoraProject:
 
 - [x] Initial repository setup
 - [x] Live-Build configuration
-- [ ] Althyn desktop components (Wayland)
+- [x] Boot Animation
+- [x] Althyn x11
+- [ ] Althyn Desktop (Wayland)
 - [ ] System applications
 - [ ] Documentation
 
