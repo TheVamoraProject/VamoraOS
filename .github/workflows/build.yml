@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Build inside Debian Trixie instead of Ubuntu
+    # Build in Debian
     container:
       image: debian:trixie
 
