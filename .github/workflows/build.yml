@@ -41,19 +41,17 @@ jobs:
             rsync \
             git \
             ca-certificates \
-            debian-archive-keyring
+            debian-archive-keyring \
+            sudo
 
           lb --version
           apt-cache policy live-build
 
-      - name: Show live-build configuration
-        run: |
-          lb config --dump || true
-
-      - name: Build ISO
+      - name: Build VamoraOS ISO
         run: |
           set -euxo pipefail
-          lb build 2>&1 | tee build.log
+          chmod +x ./build.sh
+          ./build.sh 2>&1 | tee build.log
 
       - name: Upload ISO
         if: success()
@@ -70,5 +68,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-logs
-          path: |
-            build.log
+          path: build.log
