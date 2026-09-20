@@ -10,6 +10,7 @@ jobs:
     # Build in Debian
     container:
       image: debian:trixie
+      options: --privileged
 
     steps:
       - name: Checkout repository
