@@ -3,6 +3,7 @@ live-config
 live-config-systemd
 gdm3
 systemd-sysv
+firmware-linux
 
 # Network
 network-manager
