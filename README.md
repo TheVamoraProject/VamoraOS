@@ -17,13 +17,13 @@ The main repository for VamoraOS Desktop
 
 ## 🚧 Current Status
 
-> ⚠️ **Heads up:** Everything — architecture, features, project structure, naming, and more — is expected to change before a stable release. There is no installer yet, so VamoraOS is **not installable** at this stage, and it is **not ready for daily driving**. Expect breaking changes at any time.
+> ⚠️ **Heads up:** Everything, architecture, features, project structure, naming, and more is expected to change before a stable release. There is no installer yet, so VamoraOS is **not installable** at this stage, and it is **not ready for daily driving!**
 
-The repository contains the Live-Build (`lb`) configuration used to build VamoraOS. Additional source code, applications, and documentation will be added as development progresses.
+The repository contains the Live-Build configuration used to build VamoraOS. Additional source code, applications, and documentation will be added as development progresses.
 
 ## 🧩 Included Projects
 
-VamoraOS bundles together several sub-projects developed under TheVamoraProject:
+VamoraOS bundles together several sub-projects developed under TheVamoraProject organization:
 
 | Project | Description | Status |
 |---|---|---|
